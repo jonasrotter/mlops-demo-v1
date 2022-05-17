@@ -16,13 +16,12 @@ print('Connecting to workspace')
 ws = Workspace.from_config()
 print(f'WS name: {ws.name}\nRegion: {ws.location}\nSubscription id: {ws.subscription_id}\nResource group: {ws.resource_group}')
 
-#training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_file")
-training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_dataset")
+training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_file")
 print('Loading dataset')
 
 # Parametrize dataset input to the pipeline
 training_dataset_parameter = PipelineParameter(name="training_dataset", default_value=training_dataset)
-training_dataset_consumption = DatasetConsumptionConfig("training_dataset", training_dataset_parameter)
+training_dataset_consumption = DatasetConsumptionConfig("training_dataset", training_dataset_parameter).as_download()
 
 runconfig = RunConfiguration()
 runconfig.environment = Environment.from_conda_specification('training-pipeline-env', 'config/train-conda.yml')
