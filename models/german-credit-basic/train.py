@@ -15,7 +15,7 @@ from azureml.interpret import ExplanationClient
 
 def get_runtime_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_name', type=str)
+    parser.add_argument('--model_name')
     parser.add_argument('--data_path', type=str)
     args = parser.parse_args()
     return args
