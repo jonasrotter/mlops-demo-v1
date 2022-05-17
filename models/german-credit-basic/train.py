@@ -24,18 +24,15 @@ def main():
     args = get_runtime_args()
 
     #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
-    path = Run.get_context().input_datasets['training_dataset']
+    input_tabular_ds = Run.get_context().input_datasets['training_dataset']
+    df = input_tabular_ds.to_pandas_dataframe()
 
-    with open(path, 'r') as f:
-        content = f.read()
-        print(content)
-
-    #clf = model_train(df)
+    clf = model_train(df)
 
     #copying model to "outputs" directory, this will automatically upload it to Azure ML
-    #output_dir = './outputs/'
-    #os.makedirs(output_dir, exist_ok=True)
-    #joblib.dump(value=clf, filename=os.path.join(output_dir, args.model_name))
+    output_dir = './outputs/'
+    os.makedirs(output_dir, exist_ok=True)
+    joblib.dump(value=clf, filename=os.path.join(output_dir, args.model_name))
 
 def model_train(df):
     run = Run.get_context()
