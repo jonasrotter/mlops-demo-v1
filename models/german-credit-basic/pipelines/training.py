@@ -21,7 +21,7 @@ print('Loading dataset')
 
 # Parametrize dataset input to the pipeline
 training_dataset_parameter = PipelineParameter(name="training_dataset", default_value=training_dataset)
-training_dataset_consumption = DatasetConsumptionConfig("training_dataset", training_dataset_parameter).as_download()
+training_dataset_consumption = DatasetConsumptionConfig("training_dataset", training_dataset_parameter).as_mount()
 
 runconfig = RunConfiguration()
 runconfig.environment = Environment.from_conda_specification('training-pipeline-env', 'config/train-conda.yml')
