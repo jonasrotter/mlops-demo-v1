@@ -25,7 +25,7 @@ def main():
     args = get_runtime_args()
 
     #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
-    df = pd.read_csv(Path(arg.data_path) / 'german_credit_data.csv')
+    df = pd.read_csv(Path(args.data_path) / 'german_credit_data.csv')
 
     clf = model_train(df)
 
