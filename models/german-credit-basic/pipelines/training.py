@@ -16,7 +16,8 @@ print('Connecting to workspace')
 ws = Workspace.from_config()
 print(f'WS name: {ws.name}\nRegion: {ws.location}\nSubscription id: {ws.subscription_id}\nResource group: {ws.resource_group}')
 
-training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_file")
+#training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_file")
+training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_dataset")
 print('Loading dataset')
 
 # Parametrize dataset input to the pipeline
