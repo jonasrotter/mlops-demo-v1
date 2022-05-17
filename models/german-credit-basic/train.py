@@ -23,9 +23,8 @@ def get_runtime_args():
 def main():
     args = get_runtime_args()
 
-    #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
-    dataset = args.data_path
-    df = dataset.to_pandas_dataframe()
+    df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
+
     clf = model_train(df)
 
     #copying model to "outputs" directory, this will automatically upload it to Azure ML
