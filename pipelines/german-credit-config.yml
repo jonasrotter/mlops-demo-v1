@@ -7,7 +7,7 @@ variables:
   ml_workspace_rg: 'jonasro_amllabs'
 
   # Name of your Compute Cluster (needs to exist)
-  ml_compute_name: 'cpu-cluster-demo'
+  ml_compute_name: 'cpu-cluster'
 
   # Name of your experiment for training tracking
   ml_experiment_name: 'german-credit-experiment'
