@@ -1,6 +1,6 @@
 variables:
   # Name of your Azure DevOps service connection to your AML workspace
-  ml_workspace_connection: 'aml-workspace-dev'
+  ml_workspace_connection: 'ml_workspace_connection'
 
   # Name of your AML workspace and its resource group
   ml_workspace_name: 'mlops-demo'
