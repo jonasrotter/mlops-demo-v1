@@ -23,9 +23,7 @@ def get_runtime_args():
 def main():
     args = get_runtime_args()
 
-    #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
-    input_tabular_ds = Run.get_context().input_datasets['training_dataset']
-    df = input_tabular_ds.to_pandas_dataframe()
+    df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
 
     clf = model_train(df)
 
