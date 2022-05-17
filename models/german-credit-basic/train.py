@@ -9,6 +9,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
+from pathlib import Path
 
 from interpret.ext.blackbox import TabularExplainer
 from azureml.interpret import ExplanationClient
@@ -23,7 +24,8 @@ def get_runtime_args():
 def main():
     args = get_runtime_args()
 
-    df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
+    #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
+    df = pd.read_csv(Path(arg.data_path) / 'german_credit_data.csv')
 
     clf = model_train(df)
 
