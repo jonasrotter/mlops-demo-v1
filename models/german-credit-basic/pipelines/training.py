@@ -17,11 +17,12 @@ ws = Workspace.from_config()
 print(f'WS name: {ws.name}\nRegion: {ws.location}\nSubscription id: {ws.subscription_id}\nResource group: {ws.resource_group}')
 
 print('Loading dataset')
-training_dataset = Dataset.get_by_name(ws, name='german_credit_file', version=1)
+#training_dataset = Dataset.get_by_name(ws, name='german_credit_file')
+training_dataset = Dataset.get_by_name(ws, name='german_credit_dataset')
 
 # Parametrize dataset input to the pipeline
-training_dataset_parameter = PipelineParameter(name="training_dataset", default_value=training_dataset)
-training_dataset_consumption = DatasetConsumptionConfig("training_dataset", training_dataset_parameter).as_download()
+#training_dataset_parameter = PipelineParameter(name="training_dataset", default_value=training_dataset)
+#training_dataset_consumption = DatasetConsumptionConfig("training_dataset", training_dataset_parameter).as_download()
 
 runconfig = RunConfiguration()
 runconfig.environment = Environment.from_conda_specification('training-pipeline-env', 'config/train-conda.yml')
@@ -30,7 +31,8 @@ train_step = PythonScriptStep(name="train-step",
                         runconfig=runconfig,
                         source_directory='./',
                         script_name='train.py',
-                        arguments=['--data_path', training_dataset_consumption, '--model_name', 'credit-prediction.pkl'],
+                        #arguments=['--data_path', training_dataset_consumption, '--model_name', 'credit-prediction.pkl'],
+                        arguments=['--data_path', training_dataset, '--model_name', 'credit-prediction.pkl'],
                         inputs=[training_dataset_consumption],
                         compute_target='cpu-cluster',
                         allow_reuse=False)
