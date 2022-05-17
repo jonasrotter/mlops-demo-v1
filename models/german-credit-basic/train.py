@@ -24,7 +24,7 @@ def main():
     args = get_runtime_args()
 
     #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
-    df = pd.read_csv(os.path.join(Run.get_context().input_datasets['Files_download'], 'german_credit_data.csv'))
+    df = pd.read_csv(os.path.join(Run.get_context().input_datasets['training_dataset'], 'german_credit_data.csv'))
 
     clf = model_train(df)
 
