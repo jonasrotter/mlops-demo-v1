@@ -24,10 +24,10 @@ def get_runtime_args():
 
 def main():
     # Initialize Python logger
+    args = get_runtime_args()
+
     logger = logging.getLogger(__name__)
     logger.setLevel(args.log_level)
-
-    args = get_runtime_args()
 
     logger.info(args.data_path)
     df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
