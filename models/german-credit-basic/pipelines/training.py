@@ -34,7 +34,7 @@ train_step = PythonScriptStep(name="train-step",
                         #arguments=['--data_path', training_dataset_consumption, '--model_name', 'credit-prediction.pkl'],
                         #inputs=[training_dataset_consumption]
                         arguments=['--data_path', training_dataset.as_named_input('credit_dataset').as_download(), '--model_name', 'credit-prediction.pkl'],
-                        #inputs=[training_dataset.as_named_input('credit_dataset').as_download()]
+                        inputs=[training_dataset.as_named_input('credit_dataset').as_download()]
                         compute_target='cpu-cluster',
                         allow_reuse=False)
 
