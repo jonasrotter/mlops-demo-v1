@@ -30,7 +30,8 @@ def main():
     logger.setLevel(logging.INFO)
 
     logger.info(args.data_path)
-    df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
+    #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
+    df = pd.read_csv(os.path.join(Run.get_context().input_datasets['test'], 'german_credit_data.csv'))
 
     clf = model_train(df)
 
