@@ -16,7 +16,8 @@ print('Connecting to workspace')
 ws = Workspace.from_config()
 print(f'WS name: {ws.name}\nRegion: {ws.location}\nSubscription id: {ws.subscription_id}\nResource group: {ws.resource_group}')
 
-training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_file")
+#training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_file")
+training_dataset = Dataset.get_by_name(workspace=ws, name="german_credit_dataset")
 print('Loading dataset')
 
 # Parametrize dataset input to the pipeline
@@ -30,8 +31,10 @@ train_step = PythonScriptStep(name="train-step",
                         runconfig=runconfig,
                         source_directory='./',
                         script_name='train.py',
-                        arguments=['--data_path', training_dataset_consumption, '--model_name', 'credit-prediction.pkl'],
-                        inputs=[training_dataset_consumption]
+                        #arguments=['--data_path', training_dataset_consumption, '--model_name', 'credit-prediction.pkl'],
+                        #inputs=[training_dataset_consumption]
+                        arguments=['--data_path', training_dataset.as_named_input('credit_dataset').as_download(), '--model_name', 'credit-prediction.pkl'],
+                        #inputs=[training_dataset.as_named_input('credit_dataset').as_download()]
                         compute_target='cpu-cluster',
                         allow_reuse=False)
 
