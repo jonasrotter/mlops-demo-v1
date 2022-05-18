@@ -26,12 +26,10 @@ def main():
     # Initialize Python logger
     args = get_runtime_args()
 
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
-
-    logger.info(args.data_path)
     #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
-    df = pd.read_csv(os.path.join(Run.get_context().input_datasets['credit_dataset'], 'german_credit_data.csv'))
+    run = Run.get_context()
+    ws = run.experiment.workspace
+    ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
     clf = model_train(df)
 
