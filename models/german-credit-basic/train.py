@@ -29,7 +29,8 @@ def main():
     #df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
     run = Run.get_context()
     ws = run.experiment.workspace
-    ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
+    dataset = Dataset.get_by_name(workspace=ws, name='german_credit_dataset')
+    df = dataset.to_pandas_dataframe()
 
     clf = model_train(df)
 
