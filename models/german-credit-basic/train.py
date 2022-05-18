@@ -27,7 +27,7 @@ def main():
     args = get_runtime_args()
 
     logger = logging.getLogger(__name__)
-    logger.setLevel(args.log_level)
+    logger.setLevel(logging.DEBUG)
 
     logger.info(args.data_path)
     df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
