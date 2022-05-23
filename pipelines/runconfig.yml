@@ -1,4 +1,0 @@
-run_config:
-  environment_name: workshop-env
-  compute_target_name: cpu-cluster
-  logging_level: INFO
