@@ -1,6 +1,6 @@
 # mlops-demo
 
-This repo shows some introduction examples to Azure Machine Learning and a simple MLOps implemenation for automating model training and deployment.
+This repo shows a simple MLOps implementation for automating model training and deployment.
 
 ## Setup & Demo Flow
 
